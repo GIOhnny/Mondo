@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vwPlayVsTime"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/worldmap"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ro.giohnnysoftware.mondo.PlayVsTime">
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/VPlayVsTimeFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/adUnitIdBanner"
+        />
+<!--
+    <RelativeLayout
+        android:id="@+id/VPlayVsTimeFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true" />
+-->
+
+    <!-- Force 32bpp -->
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <RelativeLayout
+        android:id="@+id/VMainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/VPlayVsTimeFooter"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:screenOrientation="portrait"
+        android:touchscreenBlocksFocus="false"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ff0000"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btStartVsTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="@dimen/btLeftMargin"
+            android:layout_marginEnd="@dimen/btRightMargin"
+            android:background="@drawable/buttonshape"
+            android:nestedScrollingEnabled="false"
+            android:text="@string/start"
+            android:textColor="@color/colorMondo1"
+            android:textSize="@dimen/btTextSize"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+
+        <TabHost
+            android:id="@+id/tabHiScores"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TabWidget>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/tab60"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <!-- List of Actions (pages) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:weightSum="1000">
+
+                            <TextView
+                                android:id="@+id/tv60No"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_weight="250"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="3dp"
+                                android:text="@string/txtPos"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv60Username"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_weight="500"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="5dp"
+                                android:text="@string/txtUserName"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv60Score"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_weight="250"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="3dp"
+                                android:text="@string/txtScore"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <ListView
+                            android:id="@+id/lvHiScore60"
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:smoothScrollbar="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab120"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:weightSum="1000">
+
+                            <TextView
+                                android:id="@+id/tv120No"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_weight="250"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="3dp"
+                                android:text="@string/txtPos"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv120Username"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_weight="500"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="5dp"
+                                android:text="@string/txtUserName"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv120Score"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_weight="250"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="3dp"
+                                android:text="@string/txtScore"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <ListView
+                            android:id="@+id/lvHiScore120"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:smoothScrollbar="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab180"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:weightSum="1000">
+
+                            <TextView
+                                android:id="@+id/tv180No"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_weight="250"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="3dp"
+                                android:text="@string/txtPos"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv180Username"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_weight="500"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="5dp"
+                                android:text="@string/txtUserName"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv180Score"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_weight="250"
+                                android:background="#50E8E8E8"
+                                android:paddingStart="3dp"
+                                android:text="@string/txtScore"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@color/colorMondo1"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <ListView
+                            android:id="@+id/lvHiScore180"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="50dp"
+                            android:smoothScrollbar="true" />
+                    </LinearLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+        </TabHost>
+    </RelativeLayout>
+</RelativeLayout>

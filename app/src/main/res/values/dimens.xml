@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">5sp</dimen>
+    <dimen name="activity_vertical_margin">5sp</dimen>
+    <dimen name="btTextSize">23sp</dimen>
+    <dimen name="edTextSize">14sp</dimen>
+    <dimen name="btPlayTextSize">20sp</dimen>
+    <dimen name="btLeftMargin">7sp</dimen>
+    <dimen name="btRightMargin">15sp</dimen>
+    <dimen name="btWidth">360sp</dimen>
+    <dimen name="btTopMargin">20sp</dimen>
+    <dimen name="tvTimeSize">20sp</dimen>
+    <dimen name="tvCountryName">23sp</dimen>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/dialog_140" />
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="7dp" />
+            <padding
+                android:bottom="0dp"
+                android:left="0dp"
+                android:right="0dp"
+                android:top="0dp" />
+
+            <size
+                android:width="200dp"
+                android:height="40dp" />
+
+            <stroke
+                android:width="2dp"
+                android:color="@color/colorMondo1" />
+
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txtTime">Timp</string>
+    <string name="txtScore">Scor</string>
+    <string name="txtUserName">Nume utilizator</string>
+    <string name="btTextT60">Limita 60 sec</string>
+    <string name="btTextT120">Limita 120 sec</string>
+    <string name="btTextT180">Limita 180 sec</string>
+    <string name="btTextP100">Limita 100 puncte</string>
+    <string name="btTextP250">Limita 250 puncte</string>
+    <string name="btTextP500">Limita 500 puncte</string>
+    <string name="MSG_EXT_WR_FAIL_EN">Permisiunile necesare nu au fost aprobate! Ieșire aplicație!</string>
+    <string name="settings_audio">Setari audio</string>
+    <string name="settings">Setari</string>
+    <string name="best_score_in_time">Cel mai bun scor în timp</string>
+    <string name="best_time_to_score">Cel mai bun timp pentru scor</string>
+    <string name="about">Despre</string>
+    <string name="country_name">Numele țării</string>
+    <string name="no_internet_connection">Fără conexiune la internet</string>
+    <string name="unknown_error">Eroare necunoscută</string>
+    <string name="already_logged_in">Deja conectat cu</string>
+    <string name="no">Nu</string>
+    <string name="yes">Da</string>
+    <string name="change_nickname">Scimbare poreclă</string>
+    <string name="User_not_changed">Poreclă neschimbată!</string>
+    <string name="Usr_guest_text_not_allowed">Textul User și Guest nu este permis!</string>
+    <string name="Nickname_exist">Porecla este deja utilizată! Încercați alta.</string>
+    <string name="txtPos" translatable="false">Poz</string>
+    <string name="musicSw">Muzica</string>
+    <string name="swSFX">SFX</string>
+    <string name="ForNPoints">pentru %1$d puncte</string>
+    <string name="EndGameToScore">Ați acumulat %1$d puncte în %2$s secunde!</string>
+    <string name="EndGameToTime">Ați acumulat %1$s puncte în %2$d secunde!</string>
+</resources>

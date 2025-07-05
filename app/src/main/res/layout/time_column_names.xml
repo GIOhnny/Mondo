@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:weightSum="1000"
+android:layout_marginTop="5dp"
+android:layout_marginLeft="5dp"
+android:layout_marginRight="5dp">
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="fill_parent"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="Pos"
+    android:id="@+id/tvNo"
+    android:layout_weight="250"
+    android:textColor="@color/colorMondo1"
+    android:background="#50E8E8E8"
+    android:layout_marginLeft="2dp"
+    android:paddingLeft="3dp"
+    android:textStyle="bold" />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="fill_parent"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="User Name"
+    android:id="@+id/tvUsername"
+    android:layout_weight="500"
+    android:textColor="@color/colorMondo1"
+    android:background="#50E8E8E8"
+    android:layout_marginLeft="2dp"
+    android:paddingLeft="5dp"
+    android:textStyle="bold" />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="fill_parent"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="Time"
+    android:id="@+id/tvTime"
+    android:layout_weight="250"
+    android:textColor="@color/colorMondo1"
+    android:background="#50E8E8E8"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:paddingLeft="3dp"
+    android:textStyle="bold" />
+</LinearLayout>

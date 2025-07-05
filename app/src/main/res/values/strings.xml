@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name" translatable="false">Mondo</string>
+    <string name="bestInTime_tab1_name" translatable="false">60 sec</string>
+    <string name="bestInTime_tab2_name" translatable="false">120 sec</string>
+    <string name="bestInTime_tab3_name" translatable="false">180 sec</string>
+    <string name="bestToScore_tab1_name" translatable="false">100 pts</string>
+    <string name="bestToScore_tab2_name" translatable="false">250 pts</string>
+    <string name="bestToScore_tab3_name" translatable="false">500 pts</string>
+    <string name="title" translatable="false"><![CDATA[> MONDO <]]></string>
+    <string name="txtTime">Time</string>
+    <string name="txtScore">Score</string>
+    <string name="txtPos">Pos</string>
+    <string name="txtUserName">User Name</string>
+    <string name="btTextT60">Best in 60 sec</string>
+    <string name="btTextT120">Best in 120 sec</string>
+    <string name="btTextT180">Best in 180 sec</string>
+    <string name="btTextCustomPlay" translatable="false">Custom play</string>
+    <string name="btTextP100">First to 100 points</string>
+    <string name="btTextP250">First to 250 points</string>
+    <string name="btTextP500">First to 500 points</string>
+    <string name="MSG_EXT_WR_FAIL_EN">External write permission not granted! Application will exit!</string>
+    <string name="settings_email_login" translatable="false">Email Login</string>
+    <string name="settings_google_login" translatable="false">Google Login</string>
+    <string name="settings_facebook_login" translatable="false">Facebook Login</string>
+    <string name="settings_audio">Audio settings</string>
+    <string name="email_login_txtemail" translatable="false">Email…</string>
+    <string name="email_login_txtpassword" translatable="false">Password…</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="register" translatable="false">Register</string>
+    <string name="settings">Settings</string>
+    <string name="best_score_in_time">Best score in time</string>
+    <string name="best_time_to_score">Best time to score</string>
+    <string name="about">About</string>
+    <string name="country_name">Country name</string>
+    <string name="imgdrapelcontentdescription" translatable="false">imgDrapelContentDescription</string>
+    <string name="start" translatable="false">Start</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="already_logged_in">Already logged in with </string>
+    <string name="OK" translatable="false">OK</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="change_nickname">Change your nickname</string>
+    <string name="User_not_changed">Nickname not changed!</string>
+    <string name="Usr_guest_text_not_allowed">User and Guest text is not allowed!</string>
+    <string name="Nickname_exist">Nickname already exist! Try another one.</string>
+    <string name="musicSw">Music</string>
+    <string name="swSFX">SFX</string>
+    <string name="Credits" translatable="false">v%1$s\n\nCredits:\nThis game is created by GIOhnnySoftWare\nCopyrighted GIOhnnySoftWare All rights reserved\nwww.giohnnysoftware.ro\n\nSpecial thanks:\nMusic: https://patrickdearteaga.com"</string>
+    <string name="ForNPoints">for %1$d points</string>
+    <string name="EndGameToScore">You scored %1$d points in %2$s seconds!</string>
+    <string name="EndGameToTime">You scored %1$s points in %2$d seconds!</string>
+    <string name="logout_question">Logout from this account?</string>
+    <!--<string name="adUnitIdBanner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+</resources>

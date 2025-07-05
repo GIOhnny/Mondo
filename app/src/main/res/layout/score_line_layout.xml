@@ -1,0 +1,45 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1000"
+    android:layout_marginTop="2dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tvNo"
+        android:layout_weight="250"
+        android:textColor="@color/colorMondo1"
+        android:background="#50E8E8E8"
+        android:layout_marginLeft="2dp"
+        android:paddingLeft="3dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tvUsername"
+        android:layout_weight="500"
+        android:textColor="@color/colorMondo1"
+        android:background="#50E8E8E8"
+        android:layout_marginLeft="2dp"
+        android:paddingLeft="5dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tvScore"
+        android:layout_weight="250"
+        android:textColor="@color/colorMondo1"
+        android:background="#50E8E8E8"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:paddingLeft="3dp"/>
+</LinearLayout>

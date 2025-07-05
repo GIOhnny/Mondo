@@ -1,0 +1,109 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services' // Apply the plugin
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    buildFeatures {
+        buildConfig true
+        viewBinding false
+    }
+    signingConfigs {
+        create("release") {
+            storeFile = file(keystoreProperties['storeFile'])
+            storePassword = keystoreProperties['storePassword']
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword = keystoreProperties['keyPassword']
+            storeType = keystoreProperties['storeType']
+        }
+    }
+    /*compileSdkVersion 34*/
+    defaultConfig {
+        applicationId "ro.giohnnysoftware.mondo"
+        minSdk 30
+        targetSdk 36
+        versionCode 17
+        versionName '1.17'
+        signingConfig signingConfigs.release
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.getByName("debug")
+            debuggable true
+            jniDebuggable true
+        }
+        release {
+            minifyEnabled true
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+            )
+            signingConfig = signingConfigs.getByName("release")
+            debuggable false
+            jniDebuggable false
+            signingConfig = signingConfigs.getByName("release")
+            setProperty("archivesBaseName", "mondo-v${defaultConfig.versionName}")
+            applicationVariants.all { variant ->
+                if (variant.buildType.name == "release") {
+                    variant.outputs.all { output ->
+                        def ext = output.outputFileName.substring(output.outputFileName.lastIndexOf('.'))
+                        output.outputFileName = "mondo-v${variant.versionName}${ext}"
+                    }
+                }
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    productFlavors {
+    }
+    // block Android to compress sqlite db
+    repositories {
+        google()
+        /** The default repository for Android Studio projects */
+        mavenCentral()
+    }
+    androidResources {
+        noCompress 'db'
+    }
+    namespace 'ro.giohnnysoftware.mondo'
+    /*buildToolsVersion '33.0.1'*/
+    ndkVersion ndkVersion
+    compileSdk 36
+    dependenciesInfo {
+        includeInApk false
+        includeInBundle false
+    }
+    buildToolsVersion '36.0.0'
+    /*buildToolsVersion '35.0.0'*/
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+
+    implementation 'com.google.firebase:firebase-analytics:22.5.0'
+    implementation 'com.google.firebase:firebase-auth:23.2.1'
+    implementation 'com.google.firebase:firebase-firestore:25.1.4'
+    //implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.firebaseui:firebase-ui-auth:9.0.0'
+    implementation 'com.google.firebase:firebase-database:21.0.0'
+    /*For sqlite access
+      https://developer.android.com/jetpack/androidx/releases/room
+    */
+    implementation 'androidx.room:room-runtime:2.7.2'
+    annotationProcessor 'androidx.room:room-compiler:2.7.2'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.2.0'
+    implementation 'com.google.android.gms:play-services-ads:24.4.0'
+}
+//apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/worldmap"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/VSettingsFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/adUnitIdBanner"
+        />
+
+    <RelativeLayout
+        android:id="@+id/VMainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/VSettingsFooter"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:screenOrientation="portrait"
+        android:touchscreenBlocksFocus="false"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ff0000"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/swMusic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/buttonplay"
+            android:checked="true"
+            android:padding="10dp"
+            android:text="@string/musicSw"
+            android:textColor="@color/colorMondo1"
+            android:textSize="20sp"
+            android:theme="@style/SwitchCompatTheme"
+            tools:ignore="UseSwitchCompatOrMaterialXml"
+            tools:visibility="invisible" />
+        <!--            android:theme="@style/SwitchCompatTheme"-->
+
+        <Switch
+            android:id="@+id/swSFX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/swMusic"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/buttonplay"
+            android:checked="true"
+            android:padding="10dp"
+            android:text="@string/swSFX"
+            android:textColor="@color/colorMondo1"
+            android:textSize="20sp"
+            android:theme="@style/SwitchCompatTheme"
+            tools:checked="true"
+            tools:ignore="UseSwitchCompatOrMaterialXml"
+            tools:visibility="invisible" />
+    </RelativeLayout>
+</RelativeLayout>

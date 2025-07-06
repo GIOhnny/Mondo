@@ -33,6 +33,13 @@
         tools:targetApi="s"
         android:hardwareAccelerated="true">
 
+        <!--MONDO PROD App-ID android:value="ca-app-pub-6512817804641390~7324924855"-->
+        <!--MONDO  DEV App-ID android:value="ca-app-pub-3940256099942544~3347511713" -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6512817804641390~7324924855"
+            />
+
         <activity
             android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden"

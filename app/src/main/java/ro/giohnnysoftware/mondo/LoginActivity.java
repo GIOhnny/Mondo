@@ -38,6 +38,10 @@ import ro.giohnnysoftware.mondo.library.dbHiScore;
 import ro.giohnnysoftware.mondo.library.dbUserExtension;
 
 public class LoginActivity extends AppCompatActivity {
+    public LoginActivity() {
+
+    }
+
     private static FirebaseAuth mFirebaseAuth;
     private static FirebaseDatabase mFirebaseDatabase;
     private static int guestNo;

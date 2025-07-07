@@ -28,8 +28,8 @@ android {
         applicationId "ro.giohnnysoftware.mondo"
         minSdk 30
         targetSdk 36
-        versionCode 18
-        versionName '1.18'
+        versionCode 20
+        versionName '1.20'
         signingConfig signingConfigs.release
     }
     buildTypes {
@@ -38,9 +38,13 @@ android {
             signingConfig signingConfigs.getByName("debug")
             debuggable true
             jniDebuggable true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
+            /* If passed to true the application will fail*/
             minifyEnabled true
+            shrinkResources false
             proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
                     "proguard-rules.pro"
@@ -48,7 +52,6 @@ android {
             signingConfig = signingConfigs.getByName("release")
             debuggable false
             jniDebuggable false
-            signingConfig = signingConfigs.getByName("release")
             setProperty("archivesBaseName", "mondo-v${defaultConfig.versionName}")
             applicationVariants.all { variant ->
                 if (variant.buildType.name == "release") {

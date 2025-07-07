@@ -58,6 +58,9 @@ import ro.giohnnysoftware.mondo.interfaces.OnGetDataListener;
 import ro.giohnnysoftware.mondo.library.dbUserExtension;
 
 public class MainActivity extends AppCompatActivity {
+    public MainActivity() {
+        //empty constructor
+    }
     private static final int STORAGE_PERMISSION_CODE = 101;
     //Animation
     //nrTranslatii = nr Butoane + 1

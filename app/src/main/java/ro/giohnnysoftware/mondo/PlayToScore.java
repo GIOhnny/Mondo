@@ -151,7 +151,10 @@ public class PlayToScore extends AppCompatActivity //extends RootActivity
 
         //OnTabChange Listener ==> read Firebase
         tabHiScores.setOnTabChangedListener(tabId -> {
-            if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             if (tabId.equals(getResources().getString(R.string.bestToScore_tab1_name)))
                 gameType = "P100";
             else if (tabId.equals(getResources().getString(R.string.bestToScore_tab2_name)))
@@ -204,7 +207,10 @@ public class PlayToScore extends AppCompatActivity //extends RootActivity
 
     private void addOnClickListeners() {
         btStartToScore.setOnClickListener(v -> {
-            if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             Intent intent = new Intent(PlayToScore.this, GamePlay.class);
             intent.putExtra("TIME", EXTRAS_time);
             intent.putExtra("POINTS", EXTRAS_points);
@@ -282,7 +288,10 @@ public class PlayToScore extends AppCompatActivity //extends RootActivity
 
     @Override
     protected void onPause() {
-        if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
+            MainActivity.sfxPlayer.start();
+        }
         animate_out();
         super.onPause();
     }

@@ -18,7 +18,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -30,11 +29,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-import ro.giohnnysoftware.mondo.interfaces.Constants;
 import ro.giohnnysoftware.mondo.interfaces.OnGetDataListener;
 import ro.giohnnysoftware.mondo.library.HiScore_details;
 import ro.giohnnysoftware.mondo.library.HiScoresCustomAdapter;
 import ro.giohnnysoftware.mondo.library.dbHiScore;
+import ro.giohnnysoftware.mondo.GamePlay;
 
 /**
  * Created by GIOhnny on 04/04/2016.
@@ -148,7 +147,10 @@ public class PlayVsTime extends AppCompatActivity {
         tabHiScores.addTab(specs);
 
         tabHiScores.setOnTabChangedListener(tabId -> {
-            if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             if (tabId.equals(getResources().getString(R.string.bestInTime_tab1_name)))
                 gameType = "T60";
             else if (tabId.equals(getResources().getString(R.string.bestInTime_tab2_name)))
@@ -201,7 +203,10 @@ public class PlayVsTime extends AppCompatActivity {
 
     private void addOnClickListeners() {
         btStartVsTime.setOnClickListener(v -> {
-            if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             Intent intent = new Intent(PlayVsTime.this, GamePlay.class);
             intent.putExtra("TIME", EXTRAS_time);
             intent.putExtra("POINTS", EXTRAS_points);
@@ -279,7 +284,10 @@ public class PlayVsTime extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
+            MainActivity.sfxPlayer.start();
+        }
         animate_out();
         super.onPause();
     }

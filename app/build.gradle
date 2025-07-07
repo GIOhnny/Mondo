@@ -43,7 +43,7 @@ android {
         }
         release {
             /* If passed to true the application will fail*/
-            minifyEnabled true
+            minifyEnabled false
             shrinkResources false
             proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),

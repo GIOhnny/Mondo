@@ -270,7 +270,8 @@ public class GamePlay extends AppCompatActivity
 
     private void endOfGameDialog(String text) {
 
-        if (LoginActivity.getDbUserExt().getSFX()) {
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
             MediaPlayer timeUp = MediaPlayer.create(this, R.raw.time_up);
             timeUp.start();
         }
@@ -301,7 +302,10 @@ public class GamePlay extends AppCompatActivity
 
         //capitala ghicita
         if (buttonText.equals(capitale.get(0))) {
-            if (LoginActivity.getDbUserExt().getSFX()) goodAnswer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             int num = Integer.parseInt(tvPoints.getText().toString()) - NextPoints;
             //am depasit nr de puncte
             if (num <= 0) {
@@ -326,7 +330,10 @@ public class GamePlay extends AppCompatActivity
             }
         } else {
             //doar 4 sanse 10, 7, 4, 1 puncte
-            if (LoginActivity.getDbUserExt().getSFX()) wrongAnswer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             NextPoints -= 3;
             tvToWin.setText(getString(R.string.ForNPoints, NextPoints));
             //tvToWin.setText("for " + NextPoints + " points");
@@ -349,7 +356,10 @@ public class GamePlay extends AppCompatActivity
 
         // Raspuns corect
         if (buttonText.equals(capitale.get(0))) {
-            if (LoginActivity.getDbUserExt().getSFX()) goodAnswer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             restore_buttons();
             int num = Integer.parseInt(tvPoints.getText().toString()) + NextPoints;
             tvPoints.setText(Integer.toString(num));
@@ -359,7 +369,10 @@ public class GamePlay extends AppCompatActivity
             queryNextCountry();
         } else {
             //doar 4 sanse 10, 7, 4, 1 puncte
-            if (LoginActivity.getDbUserExt().getSFX()) wrongAnswer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                wrongAnswer.start();
+            }
             NextPoints -= 3;
             //tvToWin.setText("for " + NextPoints + " points");
             tvToWin.setText(getString(R.string.ForNPoints, NextPoints));

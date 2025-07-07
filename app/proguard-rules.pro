@@ -1,6 +1,6 @@
 # Generic ProGuard rules for an Android application.
 # You WILL LIKELY NEED TO ADD MORE RULES specific to your app and libraries.
--keep class ro.giohnnysoftware.mondo.*
+#-keep class ro.giohnnysoftware.mondo.*
 # Keep the no-argument constructor for UserPojo
 -keep class ro.giohnnysoftware.mondo.* { public <init>(); }
 -keep class ro.giohnnysoftware.mondo.library.* { public <init>(); }

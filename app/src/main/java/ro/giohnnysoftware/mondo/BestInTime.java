@@ -13,13 +13,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
-import ro.giohnnysoftware.mondo.interfaces.Constants;
 
 public class BestInTime extends AppCompatActivity
         implements View.OnClickListener {
@@ -168,14 +165,20 @@ public class BestInTime extends AppCompatActivity
 
     @Override
     protected void onPause() {
-        if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
+            MainActivity.sfxPlayer.start();
+        }
         animate_out();
         super.onPause();
     }
 
     @Override
     public void onClick(View v) {
-        if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
+            MainActivity.sfxPlayer.start();
+        }
         Intent intent = new Intent(BestInTime.this, PlayVsTime.class);
         switch (v.getId()) {
             case R.id.btBest60:

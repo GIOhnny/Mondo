@@ -58,9 +58,6 @@ import ro.giohnnysoftware.mondo.interfaces.OnGetDataListener;
 import ro.giohnnysoftware.mondo.library.dbUserExtension;
 
 public class MainActivity extends AppCompatActivity {
-    public MainActivity() {
-        //empty constructor
-    }
     private static final int STORAGE_PERMISSION_CODE = 101;
     //Animation
     //nrTranslatii = nr Butoane + 1
@@ -82,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     //AdView adView = new AdView(this);
 
+    // Declare and initialize the ActivityResultLauncher as an instance variable
+    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                int resultCode = result.getResultCode();
+                Intent data = result.getData();
+                // Call your existing onActivityResult logic here
+                // Make sure onActivityResult can handle being called like this
+                // or refactor its logic into a new method that can be called here.
+                onActivityResult(Constants.RC_SIGN_IN, resultCode, data);
+            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,7 +170,10 @@ public class MainActivity extends AppCompatActivity {
     public void startBackgroundMusic() {
         musicPlayer = MediaPlayer.create(this, R.raw.mondo_music);
         musicPlayer.setLooping(true);
-        if (LoginActivity.getDbUserExt().getMusic()) musicPlayer.start();
+        Boolean music = LoginActivity.getDbUserExt().getMusic();
+        if (music != null && music) {
+            musicPlayer.start();
+        }
     }
 
     private void setUIhandler() {
@@ -262,7 +273,10 @@ public class MainActivity extends AppCompatActivity {
         //animate screen to next intent => best score in time
         btBestScore.setOnClickListener(v -> {
             if (!checkInternetConnection()) return;
-            if (LoginActivity.getDbUserExt().getSFX()) sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             Intent intent = new Intent(MainActivity.this, BestInTime.class);
             startActivity(intent);
         });
@@ -270,7 +284,10 @@ public class MainActivity extends AppCompatActivity {
         //animate screen to next intent => best time to score
         btBestTime.setOnClickListener(v -> {
             if (!checkInternetConnection()) return;
-            if (LoginActivity.getDbUserExt().getSFX()) sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             Intent intent = new Intent(MainActivity.this, BestToScore.class);
             startActivity(intent);
         });
@@ -278,21 +295,31 @@ public class MainActivity extends AppCompatActivity {
         //animate screen to next intent => Settings
         btSettings.setOnClickListener(v -> {
             if (!checkInternetConnection()) return;
-            if (LoginActivity.getDbUserExt().getSFX()) sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             Intent intent = new Intent(MainActivity.this, Settings.class);
             startActivity(intent);
         });
         //animate screen to next intent => About
         btAbout.setOnClickListener(v -> {
             if (!checkInternetConnection()) return;
-            if (LoginActivity.getDbUserExt().getSFX()) sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                MainActivity.sfxPlayer.start();
+            }
             Intent intent = new Intent(MainActivity.this, About.class);
             startActivity(intent);
         });
 
         lbUserProvider.setOnClickListener(v -> {
             if (!checkInternetConnection()) return;
-            if (LoginActivity.getDbUserExt().getSFX()) sfxPlayer.start();
+
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                sfxPlayer.start();
+            }
             //Login allowed only for passing from guest to provider
             //Dialog box if already user
             if (!current_provider.equals(PRV_ANONYMOUS)) {
@@ -335,7 +362,10 @@ public class MainActivity extends AppCompatActivity {
 
         lbUserNickname.setOnClickListener(v -> {
             if (!checkInternetConnection()) return;
-            if (LoginActivity.getDbUserExt().getSFX()) sfxPlayer.start();
+            Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+            if (sfx != null && sfx) {
+                sfxPlayer.start();
+            }
             changeNickNameDialog(LoginActivity.getDbUserExt().getNickName());
         });
     }
@@ -343,36 +373,20 @@ public class MainActivity extends AppCompatActivity {
     private void loginProcess() {
         List<AuthUI.IdpConfig> providers =
                 Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build(),
-                new AuthUI.IdpConfig.AnonymousBuilder().build());
-        // Use ActivityResultLauncher instead of deprecated startActivityForResult
-        ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    int resultCode = result.getResultCode();
-                    Intent data = result.getData();
-                    onActivityResult(Constants.RC_SIGN_IN, resultCode, data);
-                });
+                        new AuthUI.IdpConfig.EmailBuilder().build(),
+                        new AuthUI.IdpConfig.GoogleBuilder().build(),
+                        new AuthUI.IdpConfig.AnonymousBuilder().build());
 
+        // Now, just launch the already initialized signInLauncher
         signInLauncher.launch(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
-                        .setLogo(R.mipmap.ic_launcher)
+                        .setLogo(R.mipmap.ic_launcher) // Make sure R.mipmap.ic_launcher is correct
                         .build()
         );
-
-/*
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers)
-                        .setLogo(R.mipmap.ic_launcher)
-                        .build(),
-                Constants.RC_SIGN_IN);
-*/
     }
+
 
     private void changeNickNameDialog(String text) {
         LayoutInflater dialog = LayoutInflater.from(this);
@@ -436,17 +450,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void displayProvider(String provider) {
-
         Drawable drawable;
-        if (provider.contains(PRV_GOOGLE)) {
+        if (provider != null && provider.contains(PRV_GOOGLE)) {
             drawable = ContextCompat.getDrawable(this, R.drawable.googleg_standard_color_18);
             current_provider = PRV_GOOGLE;
-        } else if (provider.contains(PRV_FACEBOOK)) {
+        } else if (provider != null && provider.contains(PRV_FACEBOOK)) {
             drawable = ContextCompat.getDrawable(this, R.drawable.fui_ic_facebook_white_22dp);
             current_provider = PRV_FACEBOOK;
-        } else if (provider.contains(PRV_MAIL)) {
+        } else if (provider != null && provider.contains(PRV_MAIL)) {
             drawable = ContextCompat.getDrawable(this, R.drawable.mail);
             current_provider = PRV_MAIL;
         } else {
@@ -455,7 +467,6 @@ public class MainActivity extends AppCompatActivity {
         }
         lbUserProvider.setBackground(drawable);
     }
-
     private void animate_out() {
         //get display size
         final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();

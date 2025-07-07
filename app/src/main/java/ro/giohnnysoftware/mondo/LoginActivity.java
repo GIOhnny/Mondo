@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +18,6 @@ import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,16 +30,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import ro.giohnnysoftware.mondo.interfaces.Constants;
 import ro.giohnnysoftware.mondo.interfaces.OnGetDataListener;
 import ro.giohnnysoftware.mondo.library.dbHiScore;
 import ro.giohnnysoftware.mondo.library.dbUserExtension;
 
 public class LoginActivity extends AppCompatActivity {
-    public LoginActivity() {
-
-    }
-
     private static FirebaseAuth mFirebaseAuth;
     private static FirebaseDatabase mFirebaseDatabase;
     private static int guestNo;

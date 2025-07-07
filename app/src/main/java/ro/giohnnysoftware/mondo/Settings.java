@@ -154,7 +154,10 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     protected void onPause() {
-        if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
+            MainActivity.sfxPlayer.start();
+        }
         animate_out();
         super.onPause();
     }
@@ -166,7 +169,10 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        if (LoginActivity.getDbUserExt().getSFX()) MainActivity.sfxPlayer.start();
+        Boolean sfx = LoginActivity.getDbUserExt().getSFX();
+        if (sfx != null && sfx) {
+            MainActivity.sfxPlayer.start();
+        }
         switch (v.getId()) {
             case R.id.swMusic:
                 if (swMusic.isChecked()) {
